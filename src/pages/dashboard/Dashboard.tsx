@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { ButtonPrimary, MoreButton } from "../../components/general/Buttons";
 import StatusPill from "../../components/general/StatusPill";
+import TabNavigation from "../../components/general/TabNavigation";
 import PageContainer from "../../containers/pageContainer/PageContainer";
 
 export default function Dashboard(){
+    const [selectedTab, setSelectedTab] = useState<string>("Overview")
     return(
         <PageContainer>
             <div className="w-full">
@@ -34,6 +37,14 @@ export default function Dashboard(){
                         <div className="h-[32px] w-[32px] rounded-full bg-red-500 border-2 border-white relative -translate-x-6 z-7 group-hover:translate-x-0 duration-200 ease-in-out" />
                     </div>
                     <p className="text-[#15272D65] text-[15px] -translate-x-6 group-hover:translate-x-0 duration-200 ease-in-out">Ava, Liam, Noah +12 others</p>
+                </div>
+                <TabNavigation
+                    selected={selectedTab}
+                    tabs={['Overview', 'Transactions']}
+                    handleSelect={(tab) => setSelectedTab(tab)}
+                />
+                <div className="mt-10">
+                    <h3 className="text-[20px] font-bold text-[#1B2528]">Summary</h3>
                 </div>
             </div>
         </PageContainer>
