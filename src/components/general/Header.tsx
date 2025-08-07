@@ -3,7 +3,7 @@ import { IoGridOutline } from "react-icons/io5";
 
 export default function Header(){
     return(
-        <div className="w-full bg-white flex items-center justify-between gap-10 px-[50px] py-[15px] fixed top-0 left-0">
+        <div className="w-full bg-white flex items-center justify-between gap-10 px-[50px] py-[15px]">
             <div className="flex items-center gap-5">
                 <div className="h-[40px] w-[40px] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#f5f5f5] duration-200 ease-in-out">
                     <FiMenu size={22} />
