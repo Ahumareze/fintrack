@@ -10,7 +10,7 @@ export default function TabNavigation({selected, tabs, handleSelect}: TabNavigat
             {tabs.map((tab, index) => (
                 <div
                     key={index}
-                    className={`px-[10px] cursor-pointer py-5 border-b text-[15px] font-medium ${selected === tab ? 'border-[#4B8B9F] text-[#437D8E]' : 'border-transparent text-[#15272D60]'} duration-400 ease-in-out`}
+                    className={`px-[10px] cursor-pointer py-3 border-b text-[15px] font-medium ${selected === tab ? 'border-[#4B8B9F] text-[#437D8E]' : 'border-transparent text-[#15272D60]'} duration-400 ease-in-out`}
                     onClick={() => handleSelect(tab)}
                 >
                     {tab}

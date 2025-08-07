@@ -3,6 +3,7 @@ import { ButtonPrimary, MoreButton } from "../../components/general/Buttons";
 import StatusPill from "../../components/general/StatusPill";
 import TabNavigation from "../../components/general/TabNavigation";
 import PageContainer from "../../containers/pageContainer/PageContainer";
+import BalanceCard from "../../components/general/BalanceCard";
 
 export default function Dashboard(){
     const [selectedTab, setSelectedTab] = useState<string>("Overview")
@@ -45,6 +46,31 @@ export default function Dashboard(){
                 />
                 <div className="mt-10">
                     <h3 className="text-[20px] font-bold text-[#1B2528]">Summary</h3>
+                    <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5">
+                        <BalanceCard
+                            title="Total Balance"
+                            value={7890}
+                            currency="$"
+                            percentageChange="+3%"
+                        />
+                        <BalanceCard
+                            title="Total Credits"
+                            value={7890}
+                            currency="$"
+                            percentageChange="+3%"
+                        />
+                        <BalanceCard
+                            title="Total Debits"
+                            value={7890}
+                            currency="$"
+                            percentageChange="+3%"
+                        />
+                        <BalanceCard
+                            title="Transactions"
+                            value={150}
+                            percentageChange="+10%"
+                        />
+                    </div>
                 </div>
             </div>
         </PageContainer>
