@@ -4,7 +4,7 @@ interface BalanceCardProps {
     title: string,
     value: number,
     currency?: string,
-    percentageChange: string
+    percentageChange: number
 }
 
 export default function BalanceCard({title, value, currency, percentageChange}:BalanceCardProps){
@@ -16,8 +16,13 @@ export default function BalanceCard({title, value, currency, percentageChange}:B
                     <FiMoreHorizontal size={22} />
                 </div>
             </div>
-            <h2 className="text-[#1B2528] font-bold text-[34px] mt-[15px]">{currency && currency} {value.toLocaleString()}</h2>
-            <p className="text-sm text-[#3E7383] font-medium mt-[4px]">{percentageChange}</p>
+            <h2 className="text-[#1B2528] font-bold text-[34px] mt-[15px]">{currency && currency}{value.toLocaleString()}</h2>
+            <p className="text-sm text-[#3E7383] font-medium mt-[4px]">
+                {percentageChange > 0
+                    ? `+${percentageChange}%`
+                    : `${percentageChange}%`
+                }
+            </p>
         </div>
     )
 }

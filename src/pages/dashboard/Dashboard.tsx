@@ -62,26 +62,26 @@ export default function Dashboard(){
                             <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5">
                                 <BalanceCard
                                     title="Total Balance"
-                                    value={7890}
+                                    value={data.summary.totalBalance}
                                     currency="$"
-                                    percentageChange="+3%"
+                                    percentageChange={data.summary.balanceChange}
                                 />
                                 <BalanceCard
                                     title="Total Credits"
-                                    value={7890}
+                                    value={data.summary.totalCredits}
                                     currency="$"
-                                    percentageChange="+3%"
+                                    percentageChange={data.summary.creditsChange}
                                 />
                                 <BalanceCard
                                     title="Total Debits"
-                                    value={7890}
+                                    value={data.summary.totalDebits}
                                     currency="$"
-                                    percentageChange="+3%"
+                                    percentageChange={data.summary.debitsChange}
                                 />
                                 <BalanceCard
                                     title="Transactions"
-                                    value={150}
-                                    percentageChange="+10%"
+                                    value={data.summary.transactionCount}
+                                    percentageChange={data.summary.transactionChange}
                                 />
                             </div>
                         </div>
