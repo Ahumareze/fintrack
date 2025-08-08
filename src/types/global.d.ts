@@ -1,5 +1,21 @@
 type Status = "Active" | "Debit" | "Credit";
 
+interface DummyDataType {
+    summary: DashboardSummary,
+    transactions: Transaction[]
+}
+
+interface DashboardSummary {
+    totalBalance: number;
+    totalCredits: number;
+    totalDebits: number;
+    transactionCount: number;
+    balanceChange: number;
+    creditsChange: number;
+    debitsChange: number;
+    transactionChange: number;
+  }
+
 interface Transaction {
     id: string;
     date: string;

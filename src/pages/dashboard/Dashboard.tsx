@@ -1,13 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonPrimary, MoreButton } from "../../components/general/Buttons";
 import StatusPill from "../../components/general/StatusPill";
 import TabNavigation from "../../components/general/TabNavigation";
 import PageContainer from "../../containers/pageContainer/PageContainer";
 import BalanceCard from "../../components/general/BalanceCard";
 import TransactionListing from "./components/TransactionListing";
+import { dummyData } from "@/data/dummyData";
+import UsersListing from "./components/UsersListing";
+import Loader from "./components/loader";
 
 export default function Dashboard(){
-    const [selectedTab, setSelectedTab] = useState<string>("Overview")
+    const [selectedTab, setSelectedTab] = useState<string>("Overview");
+
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [data, setData] = useState<DummyDataType | null>(null)
+
+    useEffect(() => {
+        handleFetchData();
+    }, []);
+
+    const handleFetchData = () => {
+        setTimeout(() => {
+            setData(dummyData)
+            setIsLoading(false);
+        }, 2000);
+    }
+
     return(
         <PageContainer>
             <div className="w-full">
@@ -30,52 +48,48 @@ export default function Dashboard(){
                         <MoreButton />
                     </div>
                 </div>
-                {/* users listing */}
-                <div className="flex items-center gap-2 group cursor-pointer mt-5">
-                    <div className="flex items-center">
-                        <div className="h-[32px] w-[32px] rounded-full bg-red-500 border-2 border-white z-10" />
-                        <div className="h-[32px] w-[32px] rounded-full bg-red-500 border-2 border-white relative -translate-x-2 z-9 group-hover:translate-x-0 duration-200 ease-in-out" />
-                        <div className="h-[32px] w-[32px] rounded-full bg-red-500 border-2 border-white relative -translate-x-4 z-8 group-hover:translate-x-0 duration-200 ease-in-out" />
-                        <div className="h-[32px] w-[32px] rounded-full bg-red-500 border-2 border-white relative -translate-x-6 z-7 group-hover:translate-x-0 duration-200 ease-in-out" />
-                    </div>
-                    <p className="text-[#15272D65] text-[15px] -translate-x-6 group-hover:translate-x-0 duration-200 ease-in-out">Ava, Liam, Noah +12 others</p>
-                </div>
+                <UsersListing />
                 <TabNavigation
                     selected={selectedTab}
                     tabs={['Overview', 'Transactions']}
                     handleSelect={(tab) => setSelectedTab(tab)}
                 />
-                <div className="mt-10">
-                    <h3 className="text-[20px] font-bold text-[#1B2528]">Summary</h3>
-                    <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5">
-                        <BalanceCard
-                            title="Total Balance"
-                            value={7890}
-                            currency="$"
-                            percentageChange="+3%"
-                        />
-                        <BalanceCard
-                            title="Total Credits"
-                            value={7890}
-                            currency="$"
-                            percentageChange="+3%"
-                        />
-                        <BalanceCard
-                            title="Total Debits"
-                            value={7890}
-                            currency="$"
-                            percentageChange="+3%"
-                        />
-                        <BalanceCard
-                            title="Transactions"
-                            value={150}
-                            percentageChange="+10%"
-                        />
+                {isLoading ? <Loader /> : (
+                    <div>
+                        <div className="mt-10">
+                            <h3 className="text-[20px] font-bold text-[#1B2528]">Summary</h3>
+                            <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5">
+                                <BalanceCard
+                                    title="Total Balance"
+                                    value={7890}
+                                    currency="$"
+                                    percentageChange="+3%"
+                                />
+                                <BalanceCard
+                                    title="Total Credits"
+                                    value={7890}
+                                    currency="$"
+                                    percentageChange="+3%"
+                                />
+                                <BalanceCard
+                                    title="Total Debits"
+                                    value={7890}
+                                    currency="$"
+                                    percentageChange="+3%"
+                                />
+                                <BalanceCard
+                                    title="Transactions"
+                                    value={150}
+                                    percentageChange="+10%"
+                                />
+                            </div>
+                        </div>
+                        <div className="mt-10">
+                            <TransactionListing transactions={[]} />
+                        </div>
                     </div>
-                </div>
-                <div className="mt-10">
-                    <TransactionListing />
-                </div>
+                )}
+                
             </div>
         </PageContainer>
     )
