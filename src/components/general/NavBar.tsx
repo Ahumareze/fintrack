@@ -22,7 +22,7 @@ export default function NavBar(){
     const location = useLocation()
 
     return(
-        <div className="bg-white w-full flex flex-col gap-2">
+        <div className="bg-white w-full flex flex-col gap-2 pl-[20px] md:pl-[50px]">
             {pages.map(({
                 title,
                 link

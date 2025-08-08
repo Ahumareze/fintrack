@@ -8,6 +8,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import StatusPill from "@/components/general/StatusPill";
 
 export default function TransactionListing({transactions}:{transactions: Transaction[]}){
     return(
@@ -20,22 +21,22 @@ export default function TransactionListing({transactions}:{transactions: Transac
                             Date<MdArrowDropDown size={22} />
                         </div>
                     </TableHead>
-                    <TableHead className="w-[400px] text-[#15272D]">
+                    <TableHead className="text-[#15272D]">
                         <div className="cursor-pointer flex items-center gap-1">
                             Remark<MdArrowDropDown size={22} />
                         </div>
                     </TableHead>
-                    <TableHead className="w-[400px] text-[#15272D]">
+                    <TableHead className="text-[#15272D]">
                         <div className="cursor-pointer flex items-center gap-1">
                             Amount<MdArrowDropDown size={22} />
                         </div>
                     </TableHead>
-                    <TableHead className="w-[400px] text-[#15272D]">
+                    <TableHead className="text-[#15272D]">
                         <div className="cursor-pointer flex items-center gap-1">
                             Currency<MdArrowDropDown size={22} />
                         </div>
                     </TableHead>
-                    <TableHead className="w-[400px] text-[#15272D]">
+                    <TableHead className="text-[#15272D]">
                         <div className="cursor-pointer flex items-center gap-1">
                             Type<MdArrowDropDown size={22} />
                         </div>
@@ -52,13 +53,20 @@ export default function TransactionListing({transactions}:{transactions: Transac
                     }, index) => (
                         <TableRow
                             key={index}
+                            className="h-[58px]"
                         >
                         
                             <TableCell>{date}</TableCell>
                             <TableCell>{remark}</TableCell>
-                            <TableCell>{amount}</TableCell>
+                            <TableCell>
+                                {type === "Credit" ? '+' : '-'}
+                                {currency === "USD" && '$'}
+                                {amount.toLocaleString()}
+                            </TableCell>
                             <TableCell>{currency}</TableCell>
-                            <TableCell>{type}</TableCell>
+                            <TableCell>
+                                <StatusPill status={type} />
+                            </TableCell>
                         </TableRow>
                     ))}
                     

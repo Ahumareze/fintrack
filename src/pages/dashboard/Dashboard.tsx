@@ -28,7 +28,7 @@ export default function Dashboard(){
 
     return(
         <PageContainer>
-            <div className="w-full">
+            <div className="w-full h-fit">
                 <div className="w-full flex items-center justify-between gap-10">
                     {/* title button goes here */}
                     <div className="flex items-center gap-5">
@@ -54,7 +54,8 @@ export default function Dashboard(){
                     tabs={['Overview', 'Transactions']}
                     handleSelect={(tab) => setSelectedTab(tab)}
                 />
-                {isLoading ? <Loader /> : (
+                {isLoading && <Loader />}
+                {!isLoading && data !== null && (
                     <div>
                         <div className="mt-10">
                             <h3 className="text-[20px] font-bold text-[#1B2528]">Summary</h3>
@@ -85,11 +86,13 @@ export default function Dashboard(){
                             </div>
                         </div>
                         <div className="mt-10">
-                            <TransactionListing transactions={[]} />
+                            <TransactionListing 
+                                transactions={data.transactions} 
+                            />
                         </div>
                     </div>
                 )}
-                
+                <div className="h-[200px] w-full" />
             </div>
         </PageContainer>
     )
