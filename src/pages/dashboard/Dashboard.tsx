@@ -4,6 +4,7 @@ import StatusPill from "../../components/general/StatusPill";
 import TabNavigation from "../../components/general/TabNavigation";
 import PageContainer from "../../containers/pageContainer/PageContainer";
 import BalanceCard from "../../components/general/BalanceCard";
+import TransactionListing from "./components/TransactionListing";
 
 export default function Dashboard(){
     const [selectedTab, setSelectedTab] = useState<string>("Overview")
@@ -71,6 +72,9 @@ export default function Dashboard(){
                             percentageChange="+10%"
                         />
                     </div>
+                </div>
+                <div className="mt-10">
+                    <TransactionListing />
                 </div>
             </div>
         </PageContainer>
