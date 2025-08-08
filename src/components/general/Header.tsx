@@ -29,7 +29,7 @@ export default function Header(){
                     </div>
                     <img 
                         className="h-[40px] w-[40px] rounded-full cursor-pointer object-cover" 
-                        src="images/avatar.png"
+                        src="images/avatar-2.jpeg"
                         alt=""
                     />
                 </div>
